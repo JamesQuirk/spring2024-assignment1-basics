@@ -572,7 +572,7 @@ def run_train_bpe(
                 Merges are ordered by order of creation.
     """
     with open(input_path, "r") as f:
-        corpus = f.read().split("\n")
+        corpus = f.read()
     tokeniser = BPETokeniser(special_tokens)
     merges = tokeniser.train(corpus, vocab_size)
-    return dict(zip(range(len(tokeniser.vocab)), tokeniser.vocab)), merges
+    return dict(enumerate(tokeniser.vocab)), merges
